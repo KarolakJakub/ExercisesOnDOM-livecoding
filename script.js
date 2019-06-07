@@ -1,5 +1,5 @@
 let display = document.getElementById('display')
-// display.disabled = true
+display.disabled = true
 
 display.addEventListener('click', (event) => {
 
@@ -53,6 +53,7 @@ lastRowButtons.insertBefore(dot, display2)
 
 numbers.forEach((button) => {
     button.addEventListener('click', (event) => {
+        event.stopPropagation()
         const number = event.target.innerText
         display.value = display.value + number
     })
@@ -74,6 +75,7 @@ operators.forEach((operator) => {
         if(operator === '=')
         {
             display.value = eval(displayValue)
+            
         }
 
         displayValue
@@ -88,3 +90,9 @@ operators.forEach((operator) => {
     })
 
 })
+
+document.getElementsByTagName('body')[0].addEventListener('click', (event) =>
+    {
+        alert('lol')
+    }
+    )

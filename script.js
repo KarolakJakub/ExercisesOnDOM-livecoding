@@ -31,6 +31,7 @@ function addElement(element, text, target){
     let htmlElement = document.createElement(element)
     htmlElement.innerText = text
     target.after(htmlElement)
+    return htmlElement
 
 }
 
@@ -54,7 +55,36 @@ numbers.forEach((button) => {
     button.addEventListener('click', (event) => {
         const number = event.target.innerText
         display.value = display.value + number
-        console.log()
+    })
+
+})
+
+acButton.addEventListener('click', (event) => {
+    display.value = ''
+})
+
+let notNumbers = !numbers;
+
+operators.forEach((operator) => {
+    operator.addEventListener('click', (event) => {
+        const operator = event.target.innerText
+        let displayValue = display.value
+        const operatorsArr = ['+', '-', '/', '*']
+
+        if(operator === '=')
+        {
+            display.value = eval(displayValue)
+        }
+
+        displayValue
+        const hasOperator = operatorsArr.some(opr => {
+            return displayValue.includes(opr)
+        })
+        if (hasOperator) {
+            return
+        } else {
+            display.value = display.value + operator
+        }
     })
 
 })
